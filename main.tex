@@ -1,0 +1,103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------
+% Tau
+% LaTeX Template
+% Version 2.4.3 (01/09/2024)
+%
+% Author: 
+% Guillermo Jimenez (memo.notess1@gmail.com)
+% 
+% License:
+% Creative Commons CC BY 4.0
+% --------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[9pt,a4paper,twoside]{tau-class/tau}
+\usepackage[english]{babel}
+
+%----------------------------------------------------------
+% TITLE
+%----------------------------------------------------------
+
+\journalname{Aprenentatge Computacional}
+%% TODO: Optional, you can set a fancier title if you like
+\title{Negation and Uncertainty Detection using Classical and Machine Learning Techniques}
+
+%----------------------------------------------------------
+% AUTHORS, AFFILIATIONS AND PROFESSOR
+%----------------------------------------------------------
+
+%% TODO: Set your names here
+\author[a,1]{Judit Félez Guerrero}
+\author[b,2]{Èlia Campos Villaró}
+
+%----------------------------------------------------------
+
+\affil[a]{1704833}
+\affil[b]{1703842}
+
+%----------------------------------------------------------
+% FOOTER INFORMATION
+%----------------------------------------------------------
+
+\institution{Universitat Autònoma de Barcelona}
+\footinfo{Class Project}
+\theday{Novembre, 2025}
+\leadauthor{Group 12} 		%% TODO: Set your group ID here
+\course{Aprenentatge Computacional}
+
+%----------------------------------------------------------
+% ABSTRACT AND KEYWORDS
+%----------------------------------------------------------
+
+\begin{abstract}    
+	%% TODO: Change this default abstract into something nice that describes your work.
+	%% Keep it below 300 words.
+    An abstract is a brief summary that outlines the key aspects of a work. An example of a famous abstract is reproduced verbatim here for illustration purposes \cite{vaswani_attention_2017}: The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results.
+\end{abstract}
+
+%----------------------------------------------------------
+
+%% TODO: Set appropriate keywords for your report.
+\keywords{a, b, c, d}
+
+%----------------------------------------------------------
+
+\begin{document}
+	%% Do NOT change any of this. Line numbers should be kept.
+    \maketitle 
+    \thispagestyle{firststyle} \tauabstract 
+    \tableofcontents
+    \linenumbers 
+    
+%----------------------------------------------------------
+
+\section{Introduction}
+	L'objectiu d'aquesta pràctica és desenvolupar un model capaç de classificar pacients segons la presència o absència de la malaltia d'Alzheimer. La detecció precoç d'aquesta malaltia és clau per millorar la qualitat de vida dels pacients i optimitzar el tractament, i els models de classificació automàtica poden ser una eina per ajudar al professionals de la salut.
+	
+	Per dur a terme aquest estudi, hem utilitzat una base de dades disponible a la plataforma \textit{Kaggle}, \url{https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset}, que conté informació clínica de 2149 pacients. Cada pacient està descrit amb 35 variables, que inclouen mesures mèdiques, resultats de proves i dades demogràfiques. La selecció d'aquesta base de dades es va basar en la seva mida suficient i la varietat d'informació disponible, que permet explorar diferents enfocaments de modelització
+	
+	Aquest informe documenta tot el procés seguit, des de l'exploració inicial de les dades i el preprocessament d'aquestes, fins a la selecció de mètriques i models, per finalitzar amb un anàlisis dels diferents resultats obtinguts. L'objectiu final és identificar quin model ofereix la millor precisió i robustesa per a la classificació de pacients amb Alzheimer.
+
+
+\section{EDA, Exploratory Data Analysis}
+
+\section{Preprocessing}
+
+\section{Metric selection}
+
+\section{Model selection}
+
+\section{Final analysis}
+
+
+Tau \LaTeX template built by Guillermo Jimenez.
+
+%----------------------------------------------------------
+
+\addcontentsline{toc}{section}{References}
+\printbibliography
+
+%----------------------------------------------------------
+
+\end{document}
