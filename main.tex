@@ -82,6 +82,84 @@
 
 \section{EDA, Exploratory Data Analysis}
 
+	\subsection{Descripció general del dataset}
+	El dataset utilitzat en aquest estudi conté informació clínica i demogràfica de 2149 pacients, identificats mitjançant un codi únic, \textit{PatientID}, que va des de 4751 fina 6900. Per a cada pacient disposem d'un conjunt ampli de variables que inclouen dades demogràfiques, factors d'estil de vida, historial mèdic, mesures clíniques, avaluacions cognitives i funcionals, simptomatologia i informació diagnòstica.
+	
+	Les varaibles demogràfiques inclouen l'edat (\textit{Age}, de 60 a 90 anys), el gènere (\textit{Gender}, on 0 representa home i 1 dona), l'etnicitat (\textit{Ethnicity}, codificada com 0: Caucasian, 1: African American, 2: Asian, 3: Other) i el nivell educatiu (\textit{EducationLevel}, amb valors des de 0: None fins a 3: Higher),
+	
+	Pel que fa als factors d'estil de vida,, el dataset recull l'índex de massa corporal (\textit{BMI}, entre 15 i 40), consum de taba (\textit{Smoking}), consum setmanal d'alcohol (\textit{AlcoholConsumption}, de 0 a 20 unitats), el nivell d'activitat física setmanal (\textit{PhysicalActivity}, de 0 a 10 hores), així com puntuacions de qualitat de la dieta (\textit{DietQuality}, de 0 a 10) i de la son (\textit{SleepQuality}, de 4 a 10).
+	
+	L’historial mèdic dels pacients està representat per variables binàries que indiquen la presència de diferents condicions: antecedents familiars d’Alzheimer (\textit{FamilyHistoryAlzheimers}), malaltia cardiovascular (\textit{CardiovascularDisease}), diabetis, depressió, lesions cranials (\textit{HeadInjury}) i hipertensió.
+	
+	Les mesures clíniques inclouen la pressió arterial (\textit{SystolicBP}, 90–180 mmHg; \textit{DiastolicBP}, 60–120 mmHg) i diversos paràmetres de perfil lipídic, com el colesterol total, LDL, HDL i els triglicèrids.
+	
+	Pel que fa a les avaluacions cognitives i funcionals, el dataset incorpora la puntuació MMSE (\textit{Mini-Mental State Examination}, entre 0 i 30), l’avaluació funcional (\textit{FunctionalAssessment}, 0–10), la presència de queixes de memòria, problemes de comportament i la puntuació d’activitats de la vida diària (\textit{ADL}).
+	
+	Els símptomes associats al deteriorament cognitiu també es registren com a variables binàries, incloent la confusió, desorientació, canvis de personalitat, dificultats per completar tasques i oblits freqüents.
+	
+	Finalment, la variable objectiu del nostre estudi és la columna \textit{Diagnosis}, que indica la presència (1) o absència (0) de diagnòstic d’Alzheimer. La qual està desbalancejada, ja que aproximadament el 65\% dels pacients no presenten Alzheimer a diferencia del 35\% que sí que el presenten.
+	
+	El dataset també inclou una columna denominada \textit{DoctorInCharge}, que conté informació confidencial i presenta el mateix valor per a tots els pacients, de manera que no aporta variabilitat i quedarà exclosa de l'anàlisi.
+	
+	\subsection{Anàlisi}
+	De les primeres coses que vam fer després de descarregar les dades va ser classificar-les en variables numèriques i categòriques, ja que el tipus de gràfic a generar depèn de la naturalesa de la variable.
+	
+	Vam considerar les variables categòriques aquelles amb un màxim de deu valors únics. Per a aquestes, es van generar gràfics de barres agrupades pel diagnòstic, amb l'objectiu d'identificar variables que mostressin diferències evidents entre pacients amb i sense Alzheimer. La majoria de variables no mostraven gran canvis en les proporcions segons el diagnòstic, com es pot observar a la \textit{Figura 1}:
+	
+	
+	Algunes variables, però, presentaven diferències significatives. Per exemple, la variable \textit{MemoryComplaints} mostrava una distribució clarament diferenciada segons el diagnòstic, \textit{Figura 2}, fet que era esperable.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.24\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{CountPlotOfHypertension.png}
+			\caption{Distribució de la hipertensió segons el diagnòstic}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.24\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{PlotMemoryComplaints.png}
+			\caption{Distribució de queixes de memòria segons el diagnòstic}
+		\end{subfigure}
+		\caption{Comparativa de variables categòriques segons el diagnòstic}
+	\end{figure}
+
+	
+	Per a les variables numèriques, es van utilitzar boxplots, ja que els count plots no són informatius per a aquests tipus de dades. En general, moltes variables numèriques no mostraven diferències evidents entre grups, com és el cas de l'edat, \textit{Figura 3}.
+	
+	
+	Algunes variables, com \textit{ADL}, sí mostraven diferències clares entre pacients amb i sense Alzheimer, \textit{Figura 4}.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.24\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{AgeByDiagnosis.png}
+			\caption{Distribució de l'edat segons el diagnòstic}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.24\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{ADL.png}
+			\caption{Distribució de l'ADL segons el diagnòstic}
+		\end{subfigure}
+		\caption{Comparativa de variables numèriques segons el diagnòstic}
+	\end{figure}
+
+	
+	Per obtenir una anàlisi més sòlida de la rellevància de cada variable, vam calcular la matriu de correlació entre totes les variables numèriques, \textit{Figura 5}. Aquesta matriu va indicar que les correlacions entre variables eren molt baixes, cosa que ens va portar a la decisó de no eliminar cap variable i considerar-les totes en el model.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{heatmap.png}
+		\caption{Matriu de correlació entre variables numèriques}
+	\end{figure}
+	
+	A partir d’aquests resultats, vam concloure que certs models com KNN podrien no ser els més indicats per a aquesta base de dades, ja que les variables tenen poca correlació i la diferenciació entre classes no és immediata a simple vista.
+	
+
+
 \section{Preprocessing}
 
 \section{Metric selection}
