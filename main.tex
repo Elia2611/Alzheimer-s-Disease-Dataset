@@ -161,8 +161,24 @@
 
 
 \section{Preprocessing}
+	El tractament de dades realitzat va començar analitzant la informació proporcionada per la funció df.info(). L’output indicava que totes les variables contenien el mateix nombre de valors no nuls (2149, corresponents a tots els pacients), excepte DoctorInCharge, que com ja s’havia descrit, tenia el mateix valor per a tots els individus. Atès que no aporta informació rellevant, es va eliminar del dataset.
+	
+	Com que les variables categòriques estaven codificades numèricament i no com a text, no va ser necessari realitzar cap procés d’\textit{encoding} addicional.
+	
+	A continuació, es va fer una detecció d’outliers per a cada variable numèrica utilitzant el mètode del rang interquartílic (IQR). Després d’aplicar aquest criteri, es va observar que les dades no contenien valors anòmals destacables, de manera que no va ser necessari aplicar cap tractament addicional.
+	
+	FALTA PARLAR DEL TRAIN-TEST SPLIT
+ 		PERCENTATGE UTILITZAT
+
 
 \section{Metric selection}
+	La selecció de mètriques ún un aspecte fonamental en l'avaluació de models de classificació, especialment en problemes on les classes estan desbalancejades. En el nostre cas, la variable objectiu, \textit{Diagnosis}, presenta una distribució desigual: aproximament el 65\% dels pacients no tenen Alzheimer, mentre que el 35\% sí en presenten. Aquest desequilibri implica que una mètrica basada únicament en el percentatge d'encerts, com l'\textit{accuracy}, podria donar resultats enganyosos. Per exemple, un model que classifiqués tots els pacients com a sans ja obtindria una precisió del 65\%, tot i ser completament inútil per a la detecció de la malaltia.
+	
+	Per aquest motiu, hem optat per utilitzar l'\textit{F1-score} com a mètrica principal d'avaluació. L'F1-score combina la \textit{precision} i el \textit{recall} en una única mesura, mitjançant la seva mitjana harmònica. Aquesta característica la fa especialment adequada en escenaris on és igualment important reduir els falsos positius, que podrien generar diagnòstics erronis i preocupació innecessària, i minimitzar els falsos negatius, encara més crític en el context mèdic, ja que un pacient amb Alzheimer no detectat podria no rebre el tractament o seguiment adequat.
+	
+	A diferència de l’accuracy, l’F1-score penalitza de manera equilibrada els errors en qualsevol de les dues direccions i reflecteix millor el rendiment real del model en situacions de desbalanceig com la nostra.
+	
+	Tot i centrar-nos en aquesta mètrica, també hem tingut en compte el precision i el recall per separat, ja que poden oferir informació complementària sobre el comportament dels models. No obstant això, és l’F1-score la mètrica que hem utilitzat per comparar els diferents models i seleccionar-ne el millor.
 
 \section{Model selection}
 
