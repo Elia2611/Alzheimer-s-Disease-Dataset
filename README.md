@@ -25,7 +25,7 @@ Requeriments:
 
 Per executar el codi:
  1. Obrir els notebooks:
-  - PrimeraAproximacio.ipynb
-  - ADD.ipynb
+     - PrimeraAproximacio.ipynb
+     - ADD.ipynb
  
  2. Executar totes les cel·les de cada fitxer.
