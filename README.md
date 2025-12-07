@@ -2,7 +2,7 @@
 DETECCIÓ DE L'ALZHEIMER A PARTIR DE DADES CLÍNIQUES
 
 Autors:
- - Judit Félez Guerrero - 1
+ - Judit Félez Guerrero - 1704833
  - Èlia Campos Villaró - 1703842
  
 Estructura del repositori Alzheimer's Disease Dataset:
