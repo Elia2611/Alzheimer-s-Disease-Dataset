@@ -1,5 +1,5 @@
 # Alzheimer-s-Disease-Dataset
-DETECCIÓ DE L'ALZHEIMER A PARTIR DE DADES CLÍNIQUES
+DETECCIÓ DE L'ALZHEIMER
 
 Autors:
  - Judit Félez Guerrero - 1704833
